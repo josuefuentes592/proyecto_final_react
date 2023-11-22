@@ -19,7 +19,7 @@ const usuarioSchema = new Schema({
     trim:true,
     required:[true,"Correo Obligatorio"]
   },
-  contraseña:{
+  contrasena:{
     type:String,
     unique:true,
     trim:true,
