@@ -1,21 +1,21 @@
 import { NextResponse } from "next/server";
 import {connectDB} from '@/libs/mongoose';
-import Usuarios from '@/models/usuario';
+import Inventarios from '@/models/inventario';
 
 export async function GET(request,{params}){
     try {
         await connectDB();
         const id = params.id;
-        const usuarios= await Usuarios.findById(id);
+        const inventarios= await Inventarios.findById(id);
 
-        if(!usuarios){
+        if(!inventarios){
             return NextResponse({
-                mensaje:"Usuario no encontrado"
+                mensaje:"Producto no encontrado"
             },{status:400})
         }
 
         return NextResponse.json({
-        usuarios
+        inventarios
         })
     } catch (error) {
         console.log(error)
@@ -29,16 +29,16 @@ export async function DELETE(request,{params}){
         await connectDB();
         const id = params.id;
         console.log(id);
-        const usuarios= await Usuarios.deleteOne({'_id':id});
+        const inventarios= await Inventarios.deleteOne({'_id':id});
         
-        if(!usuarios){
+        if(!inventarios){
             return NextResponse({
-                mensaje:"Usuario no encontrado"
+                mensaje:"Producto no encontrado"
             },{status:400})
         }
 
         return NextResponse.json({
-        usuarios
+        inventarios
         })
     } catch (error) {
         console.log(error)
@@ -53,17 +53,17 @@ export async function PUT(request,{params}){
         await connectDB();
         const data = await request.json();
         const id = params.id; 
-        const usuarioUpdated=await Usuarios.findByIdAndUpdate(id,data,{new:true});
+        const inventarioUpdated=await Inventarios.findByIdAndUpdate(id,data,{new:true});
         
-        if(!usuarioUpdated){
+        if(!inventarioUpdated){
             return NextResponse({
 
-                mensaje:"Usuario no encontrado"
+                mensaje:"Producto no encontrado"
             },{status:400})
         }
 
         return NextResponse.json({
-            usuarioUpdated 
+            inventarioUpdated 
         })
     } catch (error) {
         console.log(error)

@@ -22,7 +22,7 @@ function HomePage ({params}){
     }
     const handleDelete=async()=>{
         //console.log();
-        if(window.confirm(`Esta seguro de eliminar la producto ${newProducto.titulo}`)){
+        if(window.confirm(`Esta seguro de eliminar la producto ${newProducto.nombre}`)){
             try {
                 const res=await fetch(`/api/producto/${params.id}`,{
                     method:"DELETE"
@@ -44,7 +44,7 @@ function HomePage ({params}){
 return(
     <div>
         <h1>{params.id}</h1>
-            <h1>Eliminar: {newProducto.titulo}</h1>
+            <h1>Eliminar: {newProducto.nombre}</h1>
             <button type="button" className="bg-red-500 px-3 py-1 rounded-md" 
                 onClick={handleDelete}>
                     Eliminar Producto

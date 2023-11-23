@@ -17,7 +17,7 @@ export default async function Productos(){
             <div className="grid grid-cols-3 gap-2">
                 {
                     productos.map(producto=>(
-                        <ProductoCard key={producto._id} producto={producto}   />
+                        <ProductoCard key={producto._id} producto={producto}  className="bg-gray-700 p-10 mt-5 text-white rounded-xl hover:bg-gray-500" />
                     ))
                 }
             </div> 

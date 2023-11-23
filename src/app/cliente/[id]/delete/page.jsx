@@ -24,7 +24,7 @@ function HomePage ({params}){
     }
     const handleDelete=async()=>{
         //console.log();
-        if(window.confirm(`Esta seguro de eliminar el cliente ${newCliente.titulo}`)){
+        if(window.confirm(`Esta seguro de eliminar el cliente ${newCliente.nombre}`)){
             try {
                 const res=await fetch(`/api/cliente/${params.id}`,{
                     method:"DELETE"
@@ -46,7 +46,7 @@ function HomePage ({params}){
 return(
     <div>
         <h1>{params.id}</h1>
-            <h1>Eliminar: {newCliente.titulo}</h1>
+            <h1>Eliminar: {newCliente.nombre}</h1>
             <button type="button" className="bg-red-500 px-3 py-1 rounded-md" 
                 onClick={handleDelete}>
                     Eliminar Cliente

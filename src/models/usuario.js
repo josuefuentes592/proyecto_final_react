@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 const { Schema,model,models } = mongoose;
-const usuarioSchema = new Schema({
+const UsuarioSchema = new Schema({
   nombre:{
     type:String,
     unique:true,
@@ -9,15 +9,21 @@ const usuarioSchema = new Schema({
   },
   apellido:{
     type:String,
+    unique:true,
     trim:true,
-    required:[true,"Apellido Obligatoria"],
+    required:[true,"Apellido Obligatorio"]
+  },
+  imagen:{
+    type:String,
+    trim:true,
+    required:[true,"Imagen Obligatoria"],
     default:'#'
   },
   correo:{
     type:String,
     unique:true,
     trim:true,
-    required:[true,"Correo Obligatorio"]
+    required:[true,"correo Obligatorio"]
   },
   contrasena:{
     type:String,
@@ -31,4 +37,4 @@ const usuarioSchema = new Schema({
 }
 );
 
-export default models.Usuario || model('Usuario',usuarioSchema);
+export default models.Usuario || model('Usuario',UsuarioSchema);

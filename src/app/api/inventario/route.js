@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import {connectDB} from '@/libs/mongoose';
-import Usuarios from '@/models/usuario';
+import Inventarios from '@/models/inventario';
 
 
 
@@ -8,9 +8,9 @@ import Usuarios from '@/models/usuario';
 export async function GET(){
     try {
         await connectDB();
-        const usuarios= await Usuarios.find();
+        const inventarios= await Inventarios.find();
         return NextResponse.json({
-        usuarios
+        inventarios
         })
     } catch (error) {
         console.log(error)
@@ -21,8 +21,8 @@ export async function POST(request){
     try {
         await connectDB();
         const data = await request.json();
-        const newUsuario = new Usuarios(data); 
-        const respuesta = await newUsuario.save();
+        const newInventario = new Inventarios(data); 
+        const respuesta = await newInventario.save();
         console.log(data);
         return NextResponse.json({
         respuesta
