@@ -18,14 +18,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <main className='container  mx-auto px-5 py-3'>
+        <main className=' mx-auto px-5 py-3'>
           <Sidebar />
           <div className="p-4 sm:ml-64">
             <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
             {children}
             </div>
           </div>
-          {/* {children} */}
         </main>
       </body>
     </html>
