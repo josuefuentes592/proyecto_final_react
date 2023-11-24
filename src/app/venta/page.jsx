@@ -1,29 +1,29 @@
-import ClienteCard from "@/components/ClienteCard";
+import VentaCard from "@/components/VentaCard";
 import Link from "next/link";
 
-export const feachClientes=()=>{
-   return fetch('http://localhost:3000/api/cliente',{ cache: 'no-store'} )
+export const feachVentas=()=>{
+   return fetch('http://localhost:3000/api/venta',{ cache: 'no-store'} )
    //return fetch('https://jsonplaceholder.typicode.com/posts')
    .then(res=>res.json());
 }
 
-export default async function Clientes(){
-    const {clientes}= await feachClientes();
-    console.log(clientes);
+export default async function Ventas(){
+    const {ventas}= await feachVentas();
+    console.log(ventas);
     return(
         <div>
 
             <h1 className="mb-4 text-xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white">
-                Lista-
+                Seccion -
                 <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
-                    Clientes
+                    Ventas
                 </span>
             </h1>
 
             <Link className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 
             focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2
              dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 
-             dark:focus:ring-blue-800" href='/cliente/new'>Nuevo Cliente</Link>
+             dark:focus:ring-blue-800" href='/venta/new'>Nueva Venta</Link>
 
             <br />
             <br />
@@ -40,7 +40,7 @@ export default async function Clientes(){
                         type="search"
                         id="default-search"
                         className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Buscar Clientes por Nombre, Apellido, Ci..."
+                        placeholder="Buscar Ventas por Nombre de producto, Fecha..."
                         required
                     />
                     <button
@@ -59,13 +59,16 @@ export default async function Clientes(){
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" className="px-6 py-3">
-                                Nombre Cliente
+                                Nombre de Producto
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Apellido
+                                Productos Vendidos
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                CI
+                                Fecha de venta
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                Precio Total
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 
@@ -77,8 +80,8 @@ export default async function Clientes(){
                     </thead>
                     <tbody>
                         {
-                            clientes.map(cliente=>(
-                                <ClienteCard key={cliente._id} cliente={cliente} />
+                            ventas.map(venta=>(
+                                <VentaCard key={venta._id} venta={venta} />
                             ))
                         }
                     </tbody>

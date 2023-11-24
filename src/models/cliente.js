@@ -18,7 +18,13 @@ const clienteSchema = new Schema({
     unique:true,
     trim:true,
     required:[true,"ci Obligatorio"]
-  }
+  },
+  imagen:{
+    type:String,
+    trim:true,
+    required:[true,"Imagen Obligatoria"],
+    default:'#'
+  },
 },
 {
     timestamps:true

@@ -3,20 +3,20 @@ const { Schema,model,models } = mongoose;
 const UsuarioSchema = new Schema({
   nombre:{
     type:String,
-    unique:true,
+    unique:false,
     trim:true,
     required:[true,"Nombre Obligatorio"]
   },
   apellido:{
     type:String,
-    unique:true,
+    unique:false,
     trim:true,
-    required:[true,"Apellido Obligatorio"]
+    required:[false]
   },
   imagen:{
     type:String,
     trim:true,
-    required:[true,"Imagen Obligatoria"],
+    required:[false],
     default:'#'
   },
   correo:{
@@ -27,7 +27,7 @@ const UsuarioSchema = new Schema({
   },
   contrasena:{
     type:String,
-    unique:true,
+    unique:false,
     trim:true,
     required:[true,"contraseña Obligatorio"]
   }

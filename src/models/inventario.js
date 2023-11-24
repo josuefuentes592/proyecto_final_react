@@ -3,7 +3,7 @@ const { Schema,model,models } = mongoose;
 const InventarioSchema = new Schema({
   nombre_articulo:{
     type:String,
-    unique:true,
+    unique:false,
     trim:true,
     required:[true,"Nombre del articulo Obligatorio"]
   },
@@ -14,7 +14,7 @@ const InventarioSchema = new Schema({
   },
   proveedor:{
     type:String,
-    unique:true,
+    unique:false,
     trim:true,
     required:[false]
   },

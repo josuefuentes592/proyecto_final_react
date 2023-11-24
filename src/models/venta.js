@@ -1,22 +1,25 @@
 import mongoose from 'mongoose';
 const { Schema,model,models } = mongoose;
-const detalle_ventaSchema = new Schema({
+const ventaSchema = new Schema({
   cantidad:{
     type:Number,
+    trim:true,
     default:0
   },
-  fecha: {
+  fecha_venta:{
     type: Date, 
-    required: [true, "Fecha obligatoria"],
+    required: [false],
   },
   precio_total:{
     type:Number,
+    trim:true,
     default:0
-  },
+  }
+  
 },
 {
     timestamps:true
 }
 );
 
-export default models.Detalle_venta || model('Detalle_venta',detalle_ventaSchema);
+export default models.Venta || model('Venta',ventaSchema);

@@ -6,6 +6,15 @@ const categoriaSchema = new Schema({
     unique:true,
     trim:true,
     required:[true,"categoria Obligatorio"]
+  },
+  descripcion:{
+    type:String,
+    trim:true,
+    required:[false]
+  },
+  fecha_creacion:{
+    type: Date, 
+    required: [false],
   }
 },
 {

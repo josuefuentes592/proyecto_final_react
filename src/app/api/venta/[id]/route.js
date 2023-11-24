@@ -1,20 +1,21 @@
 import { NextResponse } from "next/server";
 import {connectDB} from '@/libs/mongoose';
-import Detalle_venta from '@/models/detalle_venta';
+import Ventas from '@/models/venta';
 
 export async function GET(request,{params}){
     try {
         await connectDB();
         const id = params.id;
-        const detalle_venta= await Detalle_venta.findById(id);
+        const ventas= await Ventas.findById(id);
 
-        if(!detalle_venta){
+        if(!ventas){
             return NextResponse({
-                mensaje:"ventas no encontrado"
+                mensaje:"Venta no encontrado"
             },{status:400})
         }
+
         return NextResponse.json({
-        detalle_venta
+        ventas
         })
     } catch (error) {
         console.log(error)
@@ -28,16 +29,16 @@ export async function DELETE(request,{params}){
         await connectDB();
         const id = params.id;
         console.log(id);
-        const detalle_venta= await Detalle_venta.deleteOne({'_id':id});
+        const ventas= await Ventas.deleteOne({'_id':id});
         
-        if(!detalle_venta){
+        if(!ventas){
             return NextResponse({
-                mensaje:"ventas no encontrado"
+                mensaje:"Venta no encontrado"
             },{status:400})
         }
 
         return NextResponse.json({
-        detalle_venta
+        ventas
         })
     } catch (error) {
         console.log(error)
@@ -52,17 +53,17 @@ export async function PUT(request,{params}){
         await connectDB();
         const data = await request.json();
         const id = params.id; 
-        const detalle_ventaUpdated=await Detalle_venta.findByIdAndUpdate(id,data,{new:true});
+        const ventaUpdated=await Ventas.findByIdAndUpdate(id,data,{new:true});
         
-        if(!detalle_ventaUpdated){
+        if(!ventaUpdated){
             return NextResponse({
 
-                mensaje:"ventas no encontrado"
+                mensaje:"Venta no encontrado"
             },{status:400})
         }
 
         return NextResponse.json({
-            detalle_ventaUpdated 
+            ventaUpdated 
         })
     } catch (error) {
         console.log(error)
