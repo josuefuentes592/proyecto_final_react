@@ -21,7 +21,7 @@ const UsuarioSchema = new Schema({
   },
   correo:{
     type:String,
-    unique:true,
+    unique:false,
     trim:true,
     required:[true,"correo Obligatorio"]
   },
